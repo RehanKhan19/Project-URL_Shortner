@@ -1,12 +1,12 @@
 const express=require("express");
 
-const { handleGenerateNewShortUrl, handleAnalytics, handleAllUrls, handleRedirect, handleHomePage }=require("../controllers/url")
+const { handleGenerateNewShortUrl, handleAnalytics, handleAllUrls, handleRedirect, handleHomeTestPage }=require("../controllers/url")
 
 const URL=require('../models/url')
 
 const router=express.Router();
 
-router.get("/home", handleHomePage)
+router.get("/homeTest", handleHomeTestPage)
 router.post("/", handleGenerateNewShortUrl)
 
 router.get("/allurls", handleAllUrls)

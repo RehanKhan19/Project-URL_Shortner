@@ -17,4 +17,4 @@ connectToMongoDB("mongodb://localhost:27017/short-url").then(()=>console.log("Mo
 app.use('/url', urlRoute);
 app.use('/', staticRoute);
 
-app.listen(PORT, ()=>console.log(`App started at port: ${PORT}`));
+app.listen(PORT, ()=>console.log(`App started at port: ${PORT}\nURL: http://localhost:${PORT}`));
