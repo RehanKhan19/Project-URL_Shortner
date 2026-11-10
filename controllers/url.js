@@ -18,6 +18,7 @@ async function handleGenerateNewShortUrl(req, res) {
         shortId: shortID,
         redirectUrl: body.url,
         visitHistory: [],
+        createdBy: req.user._id,
         }
     );
     return res.render('home', 
@@ -69,14 +70,17 @@ async function handleAllUrls(req, res){
 }
 
 async function handleRedirect(req, res){
-    const shortId=req.params.id;    
+    const shortId=req.params.id;
     const entry = await URL.findOneAndUpdate({
         shortId: shortId //searches for the variable shortId in db as shortId stored in db
-    }, { $push: {
+        }, 
+        { $push: {
         visitHistory: {
             timestamp: Date.now()
+                }
+            }
         }
-    }})
+    )
     if(!entry){
         return res.send({
             error: "Wrong URL"
