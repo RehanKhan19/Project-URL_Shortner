@@ -9,6 +9,11 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    role: { //added role to user
+        type: String,
+        required: true,
+        default: "NORMAL",
+    },
     password: {
         type: String,
         required: true
